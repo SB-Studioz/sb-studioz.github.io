@@ -3,42 +3,134 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brainic — Mind Games</title>
+<title>Brainic — Free Mind Games: 2048, Sudoku, Connect Four, Battleship &amp; More</title>
+<meta name="description" content="Brainic is a free brain-games hub for Android with 2048, Sudoku, Connect Four, Dots &amp; Boxes, Ultimate Tic-Tac-Toe, Block Blast, Hangman and Battleship. Play vs computer, pass &amp; play, or online with friends." />
+<meta name="keywords" content="Brainic, brain games app, 2048 game, Sudoku app, Connect Four online, Dots and Boxes, Ultimate Tic-Tac-Toe, Block Blast, Hangman game, Battleship game, free puzzle games Android" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://sb-studioz.github.io/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Brainic — Free Mind Games for Android" />
+<meta property="og:description" content="2048, Sudoku, Connect Four, Dots &amp; Boxes, Ultimate Tic-Tac-Toe, Block Blast, Hangman and Battleship — all in one calm, ad-free-feeling brain-games hub." />
+<meta property="og:url" content="https://sb-studioz.github.io/" />
+<meta property="og:site_name" content="Brainic" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Brainic — Free Mind Games for Android" />
+<meta name="twitter:description" content="2048, Sudoku, Connect Four, Dots & Boxes, UTTT, Block Blast, Hangman and Battleship in one app." />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Brainic — Mind Games",
+  "url": "https://sb-studioz.github.io/",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "SB Studios" },
+  "description": "A calm hub of mini brain games — 2048, Sudoku, Connect Four, Dots & Boxes, Ultimate Tic-Tac-Toe, Block Blast, Hangman and Battleship. Play vs computer, pass & play, or online.",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.brainic.mindgames"
+}
+</script>
+
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at 50% 0%, #241f45 0%, #12102a 60%, #0b0a1c 100%);
+    background: radial-gradient(circle at 50% 0%, #241f45 0%, #12102a 55%, #0b0a1c 100%);
+    background-attachment: fixed;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #f4f2ff;
-    padding: 24px;
   }
-  .card {
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-  }
-  h1 {
-    font-size: 34px;
-    margin: 0 0 8px;
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }
+
+  /* Hero */
+  header.hero { text-align: center; padding: 24px 0 40px; }
+  h1.brand {
+    font-size: 42px;
+    margin: 0 0 10px;
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(109,90,214,0.7);
+    text-shadow: 0 2px 10px rgba(109,90,214,0.7);
   }
-  h1 span { color: #F0A73B; }
-  p.tagline {
-    color: #b9b6d9;
-    margin: 0 0 32px;
+  h1.brand span { color: #F0A73B; }
+  p.tagline { color: #b9b6d9; margin: 0 0 28px; font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  a.cta {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
     font-size: 15px;
   }
+  a.cta.primary { background: linear-gradient(135deg, #9B7EFF, #6D4CE0); color: #fff; box-shadow: 0 8px 24px rgba(109,76,224,0.35); }
+  a.cta.secondary { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); color: #f4f2ff; }
+
+  /* Section headings */
+  h2.section-title {
+    font-size: 22px;
+    margin: 0 0 6px;
+    text-align: center;
+  }
+  p.section-sub { text-align: center; color: #9c99bd; margin: 0 0 28px; font-size: 14px; }
+
+  /* Games grid */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .game-card {
+    border-radius: 18px;
+    padding: 18px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .game-card .badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .game-card h3 { margin: 0 0 4px; font-size: 18px; }
+  .game-card p.desc { margin: 0 0 12px; color: #b9b6d9; font-size: 13.5px; }
+  .game-card details { font-size: 13.5px; color: #d8d6ee; }
+  .game-card summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #cfc9ff;
+    outline: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .game-card summary::-webkit-details-marker { display: none; }
+  .game-card summary::before { content: "▸"; transition: transform 0.15s ease; }
+  .game-card details[open] summary::before { transform: rotate(90deg); }
+  .game-card ol { margin: 10px 0 6px; padding-left: 18px; }
+  .game-card ol li { margin-bottom: 6px; }
+  .game-card ol li b { color: #f4f2ff; }
+  .game-card .tip { margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,0.05); font-size: 12.5px; color: #a9a6cc; }
+
+  /* Footer links */
   .links {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
   }
   a.link {
     display: block;
@@ -50,26 +142,172 @@
     text-decoration: none;
     font-size: 15px;
     font-weight: 600;
+    text-align: center;
     transition: background 0.15s ease;
   }
   a.link:hover { background: rgba(255,255,255,0.12); }
-  footer {
-    margin-top: 40px;
-    font-size: 12px;
-    color: #6f6c8f;
-  }
+  footer.site-footer { margin-top: 48px; text-align: center; font-size: 12px; color: #6f6c8f; }
 </style>
 </head>
 <body>
-  <div class="card">
-    <h1>BRAIN<span>IC</span></h1>
-    <p class="tagline">A calm hub of mini brain games — 2048, Sudoku, Dots &amp; Boxes, Battleship and more.</p>
-    <div class="links">
-      <a class="link" href="https://play.google.com/store/apps/details?id=com.brainic.mindgames">Get it on Google Play</a>
-      <a class="link" href="https://sb-studioz.github.io/brainic-privacy-policy/">Privacy Policy</a>
-      <a class="link" href="mailto:team.sb.studioz@gmail.com">Contact / Support</a>
-    </div>
-    <footer>&copy; SB Studios</footer>
+  <div class="wrap">
+
+    <header class="hero">
+      <h1 class="brand">BRAIN<span>IC</span></h1>
+      <p class="tagline">A calm hub of mini brain games for Android — 2048, Sudoku, Connect Four, Dots &amp; Boxes, Ultimate Tic-Tac-Toe, Block Blast, Hangman and Battleship. Play solo, pass the phone, or challenge a friend online.</p>
+      <div class="cta-row">
+        <a class="cta primary" href="https://play.google.com/store/apps/details?id=com.brainic.mindgames">Get it on Google Play</a>
+        <a class="cta secondary" href="#games">See all games</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="games" aria-labelledby="games-heading">
+        <h2 class="section-title" id="games-heading">8 games, one app</h2>
+        <p class="section-sub">Tap a game to see how to play</p>
+
+        <div class="games-grid">
+
+          <article class="game-card" id="connect-four" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8)">Connect Four</span>
+            <h3 itemprop="name">Connect Four</h3>
+            <p class="desc" itemprop="description">Drop discs, line up four</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Goal.</b> Be the first to connect 4 discs in a row!</li>
+                <li><b>Drop a disc.</b> Tap a column to drop your disc to the bottom.</li>
+                <li><b>Connect 4.</b> Connect 4 discs horizontally, vertically, or diagonally to win.</li>
+              </ol>
+              <div class="tip">Tip: Block your opponent before they connect 4!</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="dots-and-boxes" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#7B6CF6,#5848E0)">Dots &amp; Boxes</span>
+            <h3 itemprop="name">Dots &amp; Boxes</h3>
+            <p class="desc" itemprop="description">Pass &amp; Play or vs Computer</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Draw a line.</b> On your turn, tap the gap between two dots to draw a line.</li>
+                <li><b>Take turns.</b> Players alternate drawing one line at a time.</li>
+                <li><b>Claim a box.</b> Close the 4th side of a box to claim it — and take another turn.</li>
+                <li><b>Most boxes wins.</b> When the grid is full, the player with the most boxes wins.</li>
+              </ol>
+              <div class="tip">Tip: Try to avoid drawing the 3rd side of a box — that gives your opponent a free claim.</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="ultimate-tic-tac-toe" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#F472B6,#DB2777)">Ultimate Tic-Tac-Toe</span>
+            <h3 itemprop="name">Ultimate Tic-Tac-Toe</h3>
+            <p class="desc" itemprop="description">Nine boards, one big game</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Nine boards.</b> The board is nine small tic-tac-toe boards inside a big one.</li>
+                <li><b>Send your opponent.</b> Your move sends your opponent to the small board matching that cell.</li>
+                <li><b>Win a board.</b> Win a small board with 3-in-a-row; if sent to a finished board, play anywhere.</li>
+                <li><b>Win the game.</b> Win three small boards in a row to win the game.</li>
+              </ol>
+              <div class="tip">Tip: Send your opponent to a finished board and they get to play anywhere!</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="sudoku" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#41C7A4,#2A9683)">Sudoku</span>
+            <h3 itemprop="name">Sudoku</h3>
+            <p class="desc" itemprop="description">Logic puzzles · 3 difficulty levels</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Goal.</b> Fill every row, column, and 3×3 box with the digits 1–9.</li>
+                <li><b>Select a cell.</b> Tap an empty cell, then tap a number to place it.</li>
+                <li><b>Helpers.</b> Use Notes for pencil marks; Hint reveals a correct cell.</li>
+                <li><b>Mistakes.</b> Three wrong entries ends the game — play carefully!</li>
+              </ol>
+              <div class="tip">Tip: Scan rows, columns, and boxes together — a number often has only one legal spot.</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="2048" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#F9B24A,#F0792B)">2048</span>
+            <h3 itemprop="name">2048</h3>
+            <p class="desc" itemprop="description">Slide &amp; merge to 2048</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Swipe.</b> Swipe up, down, left, or right — every tile slides that way.</li>
+                <li><b>Merge tiles.</b> Two tiles with the same number merge into one, doubling its value.</li>
+                <li><b>Reach 2048.</b> Make a 2048 tile to win, then keep going for a higher score.</li>
+                <li><b>New game.</b> No moves left? Tap New Game to start over. Your best score is saved.</li>
+              </ol>
+              <div class="tip">Tip: Keep your highest tile in a corner — it makes bigger merges much easier.</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="block-blast" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#2DD4C8,#0E8F8A)">Block Blast</span>
+            <h3 itemprop="name">Block Blast</h3>
+            <p class="desc" itemprop="description">Clear rows &amp; columns for score</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Place pieces.</b> Drag a piece from the tray and drop it onto the board.</li>
+                <li><b>Clear lines.</b> Fill a full row or column and it clears — more room to keep playing.</li>
+                <li><b>Score points.</b> Score points for every block placed and every line cleared.</li>
+                <li><b>Game over.</b> Game ends when none of your 3 pieces fit anywhere. Beat your best score!</li>
+              </ol>
+              <div class="tip">Tip: Keep the board open and flat — don't let gaps pile up in corners.</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="hangman" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#9B7EFF,#6D4CE0)">Hangman</span>
+            <h3 itemprop="name">Hangman</h3>
+            <p class="desc" itemprop="description">Guess the word, letter by letter</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Guess letters.</b> Tap letters on the keyboard to guess what the hidden word is.</li>
+                <li><b>Correct guess.</b> A correct letter fills in every spot it appears.</li>
+                <li><b>Wrong guess.</b> A wrong letter adds a piece to the drawing — too many wrong guesses and it's over.</li>
+                <li><b>Win.</b> Guess every letter before the drawing is complete to win.</li>
+              </ol>
+              <div class="tip">Tip: Guess common vowels first (A, E, I, O, U) to reveal more of the word early.</div>
+            </details>
+          </article>
+
+          <article class="game-card" id="battleship" itemscope itemtype="https://schema.org/Game">
+            <span class="badge" style="background:linear-gradient(135deg,#3AA8DA,#146B95)">Battleship</span>
+            <h3 itemprop="name">Battleship</h3>
+            <p class="desc" itemprop="description">Sink the enemy fleet first</p>
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li><b>Place your fleet.</b> Tap a ship, then tap the grid to place it. Rotate before placing if you need to.</li>
+                <li><b>Take turns firing.</b> Tap a cell on the enemy grid to fire. A hit lets you keep tracking that ship.</li>
+                <li><b>Sink the fleet.</b> Hit every cell of a ship to sink it. Sink all enemy ships first to win.</li>
+              </ol>
+              <div class="tip">Tip: Spread your ships out — clustering them makes it easy for your opponent to sink two at once.</div>
+            </details>
+          </article>
+
+        </div>
+      </section>
+
+      <section aria-labelledby="links-heading">
+        <h2 class="section-title" id="links-heading">More</h2>
+        <div class="links">
+          <a class="link" href="https://play.google.com/store/apps/details?id=com.brainic.mindgames">Get it on Google Play</a>
+          <a class="link" href="https://sb-studioz.github.io/brainic-privacy-policy/">Privacy Policy</a>
+          <a class="link" href="mailto:team.sb.studioz@gmail.com">Contact / Support</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">&copy; SB Studios</footer>
   </div>
 </body>
 </html>

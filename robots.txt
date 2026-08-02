@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sb-studioz.github.io/sitemap.xml
