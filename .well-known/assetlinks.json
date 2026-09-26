@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sbstudioz.quickstop",
+      "sha256_cert_fingerprints": [
+        "51:8D:46:D3:06:16:BC:B3:A4:E6:FF:60:B4:C3:F4:84:54:B6:73:1D:0F:72:63:47:D9:18:2E:6C:26:2B:C3:AB",
+        "2E:61:3E:57:52:01:62:0F:B9:13:67:1F:98:56:1C:CA:29:CC:5D:B2:C0:23:2F:DF:C0:70:59:59:3C:D6:F9:30"
+      ]
+    }
+  }
+]

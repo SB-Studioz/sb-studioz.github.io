@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join a QuickStop game</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0B12">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:title" content="Join my QuickStop game">
+<meta property="og:description" content="One letter. Four answers. Everyone at once.">
+<meta property="og:type" content="website">
+
+<style>
+  /*
+   * The page somebody lands on when they tap an invite and the app is not
+   * installed — or when Android has not verified the app link yet. It has one
+   * job: get them into the room, or into the store, without a wall of text.
+   *
+   * Colours match the app's dark scheme so the handover does not feel like
+   * leaving it.
+   */
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: #0B0B12;
+    color: #F5F5FA;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+  }
+  main { max-width: 22rem; width: 100%; }
+
+  .mark {
+    width: 84px; height: 84px; margin: 0 auto 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9D7BFF, #5B3BE8);
+    display: grid; place-items: center;
+    font-size: 34px; font-weight: 700;
+  }
+
+  h1 { font-size: 1.5rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  p  { color: #A0A0B8; margin: 0 0 28px; line-height: 1.5; }
+
+  /* The code is the fallback that always works: worst case they read it out
+     and type it into the app by hand. */
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 2rem; font-weight: 600; letter-spacing: 0.28em;
+    padding: 18px 12px 18px 24px;
+    border-radius: 16px;
+    background: #14141F;
+    border: 1px solid rgba(255,255,255,0.10);
+    margin-bottom: 24px;
+  }
+  .code.hidden { display: none; }
+
+  a.btn {
+    display: block;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 12px;
+  }
+  .open  { background: linear-gradient(135deg, #7C5CFF, #B84DFF); color: #fff; }
+  .store { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #F5F5FA; }
+
+  small { color: #75758E; display: block; margin-top: 18px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">Q</div>
+  <h1 id="title">You have been invited</h1>
+  <p>QuickStop — one letter, four answers, everyone at once.</p>
+
+  <div class="code hidden" id="code"></div>
+
+  <a class="btn open" id="open" href="#">Open in QuickStop</a>
+  <a class="btn store" id="store"
+     href="https://play.google.com/store/apps/details?id=com.sbstudioz.quickstop">Get the app</a>
+
+  <small id="hint">Already have the app? Tap “Open in QuickStop”.</small>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ?c=ABC123, validated to the app's own code shape so a junk link cannot
+  // put arbitrary text on the page.
+  var raw = new URLSearchParams(location.search).get('c') || '';
+  var code = /^[A-Z2-9]{6}$/.test(raw.toUpperCase()) ? raw.toUpperCase() : '';
+
+  var deepLink = code ? 'quickstop://join/' + code : 'quickstop://';
+  document.getElementById('open').href = deepLink;
+
+  if (code) {
+    var el = document.getElementById('code');
+    el.textContent = code;
+    el.classList.remove('hidden');
+    document.getElementById('title').textContent = 'Join room ' + code;
+    document.getElementById('hint').textContent =
+      'No app? Install it, then enter ' + code + ' on the home screen.';
+  }
+
+  /*
+   * Try the app straight away, once.
+   *
+   * Deliberately not a redirect to the store on a timer: that fires while the
+   * app is opening on slow devices and yanks people out of the game they were
+   * joining. If the app is not there, nothing happens and the buttons are
+   * right here.
+   */
+  if (/Android/i.test(navigator.userAgent)) {
+    var frame = document.createElement('iframe');
+    frame.style.display = 'none';
+    frame.src = deepLink;
+    document.body.appendChild(frame);
+    setTimeout(function () { frame.remove(); }, 1500);
+  }
+})();
+</script>
+</body>
+</html>
